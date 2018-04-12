@@ -4,12 +4,13 @@
 console.log('index.js is connected');
 
 $(document).ready(function() {
+  markApp.addBookmark();
   api.getBookmarks((retrievedMarks) => {
     retrievedMarks.forEach(store.addMark);
     markApp.loadPage();
   });
    
-
+  markApp.loadPage();
 
 });
 
