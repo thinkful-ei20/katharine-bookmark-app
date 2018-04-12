@@ -1,11 +1,34 @@
 'use strict';
-/* global store, markapp api, */
+/* global store, markApp api, */
 
 console.log('index.js is connected');
 
 $(document).ready(function() {
-  api.getBookmarks(retrievedMarks => retrievedMarks.forEach(store.addMark));
+  api.getBookmarks((retrievedMarks) => {
+    retrievedMarks.forEach(store.addMark);
+    markApp.loadPage();
+  });
+   
 
-  //load all the marks
-console.log(store.allMarks.forEach(markapp.generateMarkHTML));
+
 });
+
+
+
+
+
+
+
+
+// I work as expected in the console
+// store.allMarks.forEach ( function (element) {
+//   console.log(element.title);
+// });
+
+
+// function generateHTML(object) {
+//   return object.title;  
+// }
+// const result = store.allMarks.map ( (mark) => generateHTML(mark));
+
+// console.log(result);

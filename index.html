@@ -11,8 +11,12 @@
 <body>
     <main role ="main">
 
+        <header role ="banner">
+                <h1>A Simple Bookmarking App</h1>
+        </header>
+
             <div class="container">
-                    <h1>A Simple Bookmarking App</h1>
+                    
                     <form id="js-addbookmark-form">
                         <label for="bookmark-entry">Site Name</label>
                         <input type="text" name="bookmark-entry" class="js-bookmark-entry" placeholder="e.g., Google.com">
@@ -38,6 +42,14 @@
 
                     <section role ="region">
                             <ul class="bookmark-list js-bookmark-list">
+                               <li>
+                                   <span class="collapsed"><em>Hard Coded Sample</em> | 5 | FUTUREICON </span>
+                                    <div class="hidden">
+                                        <p>ipsum lorem, lorem ipsum</p>
+                                        <button><a href="www.example.com">Visit Site</a></button>
+                                    </div>
+
+                               </li>
                             </ul>
                     </section>
 
@@ -48,6 +60,7 @@
     <script src="//code.jquery.com/jquery.min.js"></script>
        <script type="text/javascript" src="scripts/api.js"></script> 
     <script type="text/javascript" src="scripts/store.js"></script>
+    <script type="text/javascript" src="scripts/markapp.js"></script>
     <script type="text/javascript" src="scripts/index.js"></script>
 </body>
 </html>
