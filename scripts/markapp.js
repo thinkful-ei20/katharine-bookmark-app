@@ -16,7 +16,7 @@ const markApp = (function () {
   const generateMarkHTML = function (mark) {
 
     return `
-    <li id=${mark.id}><em>"${mark.title}</em> | "${mark.rating}"
+    <li id=${mark.id}><em>"${mark.title}</em> | "${mark.rating} | <span class="js-expander"><i class="fas fa-chevron-down"></i></span>"
     <div class="hidden">
     <p> "${mark.desc}"
     </p>
@@ -30,7 +30,15 @@ const markApp = (function () {
   const bindEventListeners = function () {
     addBookmark();
     deleteBookmark();
+    expandMark();
   };
+
+  function expandMark(){
+    $('.js-bookmark-list').on('click', 'span', function (event) {
+      console.log('expander works!');
+      $(event.currentTarget).next('div').toggleClass('hidden');
+    });
+  }
 
   function addBookmark () {
     $('.js-addbookmark-form').submit(function (event) {
