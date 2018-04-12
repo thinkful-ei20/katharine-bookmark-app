@@ -16,7 +16,7 @@ const store = {
       rating: markServerData.rating,
       desc: markServerData.desc,
       expanded: false,
-    }
+    };
     return store.allMarks.push(newMark);
   }
 }; 

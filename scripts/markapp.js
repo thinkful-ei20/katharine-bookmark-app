@@ -16,12 +16,12 @@ const markApp = (function () {
   const generateMarkHTML = function (mark) {
 
     return `
-    <li><em>"${mark.title}</em> | "${mark.rating}"
+    <li id=${mark.id}><em>"${mark.title}</em> | "${mark.rating}"
     <div class="hidden">
     <p> "${mark.desc}"
     </p>
     <button><a href="${mark.url}">Visit Site</a></button>
-    <button>Delete</button>
+    <button class="js-deletebutton">Delete</button>
     </div>
     </li>`
     ;
@@ -29,6 +29,7 @@ const markApp = (function () {
 
   const bindEventListeners = function () {
     addBookmark();
+    deleteBookmark();
   };
 
   function addBookmark () {
@@ -48,6 +49,11 @@ const markApp = (function () {
       }); 
     }); 
   }
+
+  function deleteBookmark () {
+    $('div').on('click', '.js-deletebutton', () => console.log('foobar!'));
+  }
+
 
   return {
     loadPage: loadPage,

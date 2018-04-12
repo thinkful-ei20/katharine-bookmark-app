@@ -19,7 +19,7 @@ const api = (function () {
     };
 
     newItem = JSON.stringify(newItem);
-    console.log(newItem),
+  
     $.ajax({
       url: `${BASE_URL}/bookmarks`,
       method: 'post',
@@ -29,9 +29,22 @@ const api = (function () {
     });
   };
 
+  const deleteBookmark = function (id, callback) {
+
+    $.ajax ({
+      url: `${BASE_URL}/bookmarks/${id}`,
+      method: 'DELETE',
+      contentType: 'application/json',
+      success: callback,
+    });
+
+  };
+
+
   return {
     getBookmarks,
     createBookmark,
+    deleteBookmark,
   };
 
 }());
