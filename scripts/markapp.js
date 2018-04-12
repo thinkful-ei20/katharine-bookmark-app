@@ -5,7 +5,6 @@ console.log('markapp is connected');
 
 const markApp = (function () {
 
-
   const loadPage = function () {
     let marks = store.allMarks;
     let rawHTML = store.allMarks.map( (marks) => generateMarkHTML(marks));
@@ -28,6 +27,9 @@ const markApp = (function () {
     ;
   };
 
+  const bindEventListeners = function () {
+    addBookmark();
+  };
 
   function addBookmark () {
     $('.js-addbookmark-form').submit(function (event) {
@@ -35,19 +37,20 @@ const markApp = (function () {
       console.log('add button listens');
       let addedTitle = $('.js-bookmark-entry').val();
       let addedURL = $('.js-url-entry').val();
+      let addedRating = null;
       let addedDesc = $('.js-mark-description').val();
 
-
-
+      api.createBookmark(addedTitle, addedURL, addedRating, addedDesc, function (response)
+      
+      {
+        store.addMark(response);
+        loadPage();
+      }); 
     }); 
-
-    const bindEventListeners = function () {
-      addBookmark();
-    };
   }
 
   return {
     loadPage: loadPage,
-    addBookmark: addBookmark,
+    bindEventListeners: bindEventListeners,
   };
 }());
