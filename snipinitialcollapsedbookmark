@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>BookMarkEE</title>
+
+
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>A Simple Bookmarking App</h1>
+        <form id="js-addbookmark-form">
+            <label for="bookmark-entry">Site Name</label>
+            <input type="text" name="bookmark-entry" class="js-bookmark-entry" placeholder="e.g., Google.com">
+
+            <label for="url-entry">Site URL</label>
+            <!-- VALIDATE URL -->
+            <input type="text" name="url-entry" class="js-url-entry" placeholder="e.g., http://www.Google.com">
+
+            <button type="submit">Add item</button>
+        </form>
+        <ul class="bookmark-list js-bookmark-list">
+          <li><h2>BookMark Name</h2> BookMark Rating
+        
+          </li>
+        </ul>
+    </div>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
