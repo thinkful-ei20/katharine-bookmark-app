@@ -31,7 +31,14 @@ const markApp = (function () {
     addBookmark();
     deleteBookmark();
     expandMark();
+    // revealError();
   };
+
+
+  // function revealError() {
+  //   $('.error').toggleClass('hidden').append('heres an error!');
+
+  // }
 
   function expandMark(){
     $('.js-bookmark-list').on('click', 'span', function (event) {

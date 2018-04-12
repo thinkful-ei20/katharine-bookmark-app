@@ -19,13 +19,20 @@ const api = (function () {
     };
 
     newItem = JSON.stringify(newItem);
-  
+
+    function handleError(message) {
+      $('.error').toggleClass('hidden').append(message);
+    } 
+
     $.ajax({
       url: `${BASE_URL}/bookmarks`,
       method: 'post',
       contentType: 'application/JSON',
       data: newItem,
       success: callback,
+      error: function (errorThrown) {
+        handleError(errorThrown.responseJSON.message);
+      }
     });
   };
 

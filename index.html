@@ -17,29 +17,35 @@
         </header>
 
             <div class="container">
+                    <div class="hidden error">
                     
+              
+                    </div>
                     <form class="js-addbookmark-form">
 
                         <label for="bookmark-entry">Site Name</label>
-                        <input type="text" name="bookmark-entry" class="js-bookmark-entry" placeholder="e.g., Google.com">
-                        <span class="right">
+                        <input type="text" name="bookmark-entry" class="js-bookmark-entry" placeholder="e.g., Google.com" ><br>
                                 <label for="url-entry">Site URL</label>
                                 <!-- VALIDATE URL -->
-                                <input type="text" name="url-entry" class="js-url-entry" placeholder="e.g., http://www.Google.com"><br>
+                                <input type="url" name="url-entry" class="js-url-entry" placeholder="e.g., http://www.Google.com" required><br>
         
-                        </span>
- 
                         <label for="markdescription">Site Description</label>
                         <input type="text" name="markdescription" class="js-mark-description" placeholder="e.g., a really good place to search">
             
 
                         <!-- <--- validate for number --> -->
                         <label for="markrating">Mark Rating</label>
-                        <input type="number" name="markrating" class="js-markrating" placeholder="1 - 5">
+                        <input type="number" name="markrating" class="js-markrating" placeholder="1 - 5" required>
 
 
 
                         <button type="submit" id="#add">Add item</button>
+                    </form>
+                    <form class='filterbox'>
+                            <input type="number" name="minimumranking" class="js-minranking" placeholder="1 - 5">
+                            
+                            <button type="submit" id="#add">Add item</button>
+
                     </form>
 
                     <section role ="region">
