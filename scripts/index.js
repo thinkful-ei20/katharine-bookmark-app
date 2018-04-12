@@ -1,14 +1,11 @@
 'use strict';
-/* global shoppingList, store, api, Item */
+/* global store, markapp api, */
+
+console.log('index.js is connected');
 
 $(document).ready(function() {
-  bookmarksList.bindEventListeners();
-  api.getBookmarks((bookmarks) => {
-    bookmarks.forEach((bookmark) => store.addItem(bookmark));
-    bookmarks.render();
-  });
-  bookmarksList.render();
+  api.getBookmarks(retrievedMarks => retrievedMarks.forEach(store.addMark));
 
+  //load all the marks
+console.log(store.allMarks.forEach(markapp.generateMarkHTML));
 });
-
-

@@ -5,26 +5,49 @@
   <title>BookMarkEE</title>
 
 
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
 
 <body>
-    <div class="container">
-        <h1>A Simple Bookmarking App</h1>
-        <form id="js-addbookmark-form">
-            <label for="bookmark-entry">Site Name</label>
-            <input type="text" name="bookmark-entry" class="js-bookmark-entry" placeholder="e.g., Google.com">
+    <main role ="main">
 
-            <label for="url-entry">Site URL</label>
-            <!-- VALIDATE URL -->
-            <input type="text" name="url-entry" class="js-url-entry" placeholder="e.g., http://www.Google.com">
+            <div class="container">
+                    <h1>A Simple Bookmarking App</h1>
+                    <form id="js-addbookmark-form">
+                        <label for="bookmark-entry">Site Name</label>
+                        <input type="text" name="bookmark-entry" class="js-bookmark-entry" placeholder="e.g., Google.com">
+                        <span class="right">
+                                <label for="url-entry">Site URL</label>
+                                <!-- VALIDATE URL -->
+                                <input type="text" name="url-entry" class="js-url-entry" placeholder="e.g., http://www.Google.com"><br>
+        
+                        </span>
+ 
+                        <label for="markdescription">Site Description</label>
+                        <input type="text" name="markdescription" class="js-mark-description" placeholder="e.g., a really good place to search">
+            
 
-            <button type="submit">Add item</button>
-        </form>
-        <ul class="bookmark-list js-bookmark-list">
-        </ul>
-    </div>
+                        <!-- <--- validate for number --> -->
+                        <label for="markrating">Mark Rating</label>
+                        <input type="number" name="markrating" class="js-markrating" placeholder="1 - 5">
+
+
+
+                        <button type="submit">Add item</button>
+                    </form>
+
+                    <section role ="region">
+                            <ul class="bookmark-list js-bookmark-list">
+                            </ul>
+                    </section>
+
+                </div>
+
+    </main>
+    
     <script src="//code.jquery.com/jquery.min.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+       <script type="text/javascript" src="scripts/api.js"></script> 
+    <script type="text/javascript" src="scripts/store.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
 </body>
 </html>
