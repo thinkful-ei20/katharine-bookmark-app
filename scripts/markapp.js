@@ -51,7 +51,18 @@ const markApp = (function () {
   }
 
   function deleteBookmark () {
-    $('div').on('click', '.js-deletebutton', () => console.log('foobar!'));
+    $('div').on('click', '.js-deletebutton', function (event) {
+      event.preventDefault();
+      console.log('delete button listens');
+      let id = $(event.currentTarget).closest('li').attr('id');
+      api.deleteBookmark(id, function (response) {
+        store.deleteMark(id);
+        loadPage();
+      }
+      );
+    }
+   
+    );
   }
 
 

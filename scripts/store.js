@@ -8,6 +8,11 @@ const store = {
   allMarks: [
     
   ],
+
+  deleteMark: function (id) {
+    this.allMarks = this.allMarks.filter(marks => marks.id !== id);
+  },
+
   addMark: function (markServerData) {
     const newMark = {
       id: markServerData.id,
