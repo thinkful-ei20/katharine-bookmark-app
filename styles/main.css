@@ -16,18 +16,47 @@ body {
 
 
 
-
 button {
   border-radius: 13px;
   border: 1px solid black;
   padding: 3%;
   font-size: inherit;
-
-/* -webkit-box-shadow: 2px 4px 8px rgba(50, 50, 50, 0.75);
+  margin: 1% auto 0 auto;
+  right: 0;
+-webkit-box-shadow: 2px 4px 8px rgba(50, 50, 50, 0.75);
 -moz-box-shadow:    2px 4px 8px rgba(50, 50, 50, 0.75);
-box-shadow:         2px 4px 8px rgba(50, 50, 50, 0.75); */
+box-shadow:         2px 4px 8px rgba(50, 50, 50, 0.75);
 
 }
+
+.center {
+  margin: auto;
+  text-align: center;
+}
+
+.col3 {
+  padding: 1%;
+  width: 40%;
+  float: left;
+}
+
+.col16 {
+  width: 16%;
+  margin: 0 1% 0 1%;
+  float: left
+}
+/* .clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+} */
+.cola {
+  padding: 1%;
+  width: 50%;
+
+  /* display: inline-block; */
+}
+
 
 .collapsed {
   border-bottom: 3px dotted black;
@@ -37,6 +66,10 @@ box-shadow:         2px 4px 8px rgba(50, 50, 50, 0.75); */
   margin: auto auto;
 }
 
+.expander {
+  float: right;
+}
+
 footer  {
   position: fixed;
   bottom: 0;
@@ -44,9 +77,8 @@ footer  {
 }
 
 form {
-  padding: 3%;
-  border: 5px solid orange;
-  width: 66%;
+  padding: 1%;
+  width: 100%%;
   margin: 0 auto 3% auto;
 }
 
@@ -61,10 +93,11 @@ header {
   display: none;
 }
 
-input[type=text] {
+input {
+  width: 90%;
   border: 1px dotted #999;
   border-radius: 0;
-
+  box-sizing: border-box;
   -webkit-appearance: none;
 }
 
@@ -86,11 +119,17 @@ ul {
   list-style-type: none;
 }
 
-
+textarea {
+  width: 100%;
+  border: 1px dotted #999;
+  border-radius: 0;
+}
 
 /*COLORS*/
 
-
+.css-addbookmark {
+  border: 5px solid #838383;
+}
 
 .submit {
   background-color: #428bca;
@@ -98,6 +137,7 @@ ul {
 }
 
 input[type=text] {
+  width: 100%;
   background-color: #EDEDED;
 }
 
@@ -112,14 +152,6 @@ footer a {
 header {
   background-color: #b4b4b4;
   border: #838383;
-}
-
-#word {
-  border-color: #5cb85c;
-}
-
-form {
-  border: 5px solid #838383;
 }
 
 li {

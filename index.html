@@ -21,29 +21,32 @@
                     
               
                     </div>
-                    <form class="js-addbookmark-form">
-
-                        <label for="bookmark-entry">Site Name</label>
-                        <input type="text" name="bookmark-entry" class="js-bookmark-entry" placeholder="e.g., Google.com" ><br>
-                                <label for="url-entry">Site URL</label>
-                                <!-- VALIDATE URL -->
-                                <input type="url" name="url-entry" class="js-url-entry" placeholder="e.g., http://www.Google.com" required><br>
+                    <form class="js-addbookmark-form css-addbookmark">
+                        <div class="col3">
+                                <label for="bookmark-entry">Name</label><br>
+                                <input type="text" name="bookmark-entry" class="js-bookmark-entry" placeholder="Google.com" ><br>      
+                        </div>
+                        <div class="col16">
+                                <label for="markrating">Rating</label><br>
+                                <input type="number" name="markrating" class="js-markrating" placeholder="1 - 5" required>
+                         </div>
+                        <div class="col3">
+                                <label for="url-entry">URL</label><br>
+                                <input type="url" name="url-entry" class="js-url-entry" placeholder="http://www.Google.com" required><br>       
+                        </div>
+                   
+                                <label for="markdescription">Description</label>
+                                <textarea name="markdescription" class="js-mark-description">a really good place to search</textarea>  
+                 
         
-                        <label for="markdescription">Site Description</label>
-                        <input type="text" name="markdescription" class="js-mark-description" placeholder="e.g., a really good place to search">
-            
-
-                        <!-- <--- validate for number --> -->
-                        <label for="markrating">Mark Rating</label>
-                        <input type="number" name="markrating" class="js-markrating" placeholder="1 - 5" required>
+       
 
 
-
-                        <button type="submit" id="#add">Add item</button>
+                       <div class="center"> <button class="center" type="submit" id="#add">Add item</button></div>
                     </form>
-                    <form class='filterbox'>
+                    <form class='filterbox center'>
                         <p>Filter by minimum rating
-                            <select name="minimum rating">
+                            <select class ='js-selectfilter' name="minimum rating">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>

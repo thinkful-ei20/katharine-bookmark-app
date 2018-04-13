@@ -10,7 +10,7 @@ const markApp = (function () {
     let marks = store.allMarks.filter( (marks) => marks.rating >= store.filteredBy);
 
     let rawHTML = marks.map( (marks) => generateMarkHTML(marks));
-    let htmlToAppend = rawHTML.join();
+    let htmlToAppend = rawHTML.join('');
     $('.js-bookmark-list').html(htmlToAppend);
  
   };
@@ -18,15 +18,14 @@ const markApp = (function () {
   const generateMarkHTML = function (mark) {
 
     return `
-    <li id=${mark.id}><em>"${mark.title}</em> | "${mark.rating} | <span class="js-expander"><i class="fas fa-chevron-down"></i></span>"
+    <li id=${mark.id}><em>${mark.title}</em> | ${mark.rating} | <span class="js-expander expander"><i class="fas fa-chevron-down"></i></span>
     <div class="hidden">
-    <p> "${mark.desc}"
+    <p> ${mark.desc}
     </p>
     <button><a href="${mark.url}">Visit Site</a></button>
     <button class="js-deletebutton">Delete</button>
     </div>
-    </li>`
-    ;
+    </li>`; 
   };
 
   const bindEventListeners = function () {
