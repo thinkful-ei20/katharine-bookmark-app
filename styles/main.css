@@ -66,7 +66,9 @@ box-shadow:         2px 4px 8px rgba(50, 50, 50, 0.75);
 
 
 .collapsed {
-  border-bottom: 3px dotted black;
+  border-bottom: 1px dotted gray;
+  display: inline-block;
+  width: 100%;
 }
 .container {
   width: 66%;
@@ -146,6 +148,22 @@ label {
 li {
   padding: 3%;
 
+}
+
+.rating {
+  text-align: right;
+
+  font-size: 1.5em;
+}
+
+.rating::before {
+  margin-right: 3%;
+  margin-left:10%;
+  content: "|";
+}
+.rating::after {
+  margin-left: 3%;
+  content: " | ";
 }
 
 .right {

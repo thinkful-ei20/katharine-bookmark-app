@@ -19,7 +19,14 @@ const markApp = (function () {
   const generateMarkHTML = function (mark) {
 
     return `
-    <li class="js-bookmark" id=${mark.id}><span class="sitename">${mark.title}</span> | ${mark.rating} | <span role="button" tabindex="0" class="js-expander expander"><i class="fas fa-chevron-down fa-2x" title="expand collapsed description"></i></span>
+    <li class="js-bookmark" id=${mark.id}>
+ 
+        <span class="sitename">${mark.title}</span> 
+        <span class="rating">${mark.rating}</span> 
+        <span role="button" tabindex="0" class="js-expander expander">
+          <i class="fas fa-chevron-down fa-2x" title="expand collapsed description"></i>
+        </span>
+
     <div class="js-expanded hidden">
     <p> ${mark.desc}
     </p>
@@ -51,15 +58,17 @@ const markApp = (function () {
   function expandMark(){
     $('.js-bookmark-list').on('click', '.js-expander', function (event) {
       console.log('expander works!');
-      $(event.currentTarget).next('div').toggleClass('hidden');
+      $(event.currentTarget).next('.js-expanded').toggleClass('hidden');
     });
   }
+
+
+  
 
   function expandMarka11y(){
     $('.js-bookmark-list').on('keydown', '.js-expander', function (event) {
       console.log('I listen!');
       var code = event.which;
-      
       // 13 = Return, 32 = Space
       if ((code === 13) || (code === 32)) {
         console.log('event.current');
@@ -86,7 +95,7 @@ const markApp = (function () {
       $('.js-bookmark-entry').val('');
       $('.js-url-entry').val('');
       $('.js-markrating').val('');
-       $('.js-mark-description').val('');
+      $('.js-mark-description').val('A place to search');
     }); 
   }
 
