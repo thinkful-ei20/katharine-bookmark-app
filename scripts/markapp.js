@@ -33,7 +33,8 @@ const markApp = (function () {
     deleteBookmark();
     expandMark();
     filterByMin();
-    // expandMarka11y();
+    expandMarka11y();
+    deleteMarka11y();
   };
 
 
@@ -53,17 +54,17 @@ const markApp = (function () {
     });
   }
 
-  // function expandMarka11y(){
-  //   $('.js-bookmark-list').on('keydown', '.js-expander', function (event) {
-  //     console.log('I listen!');
-  //     var code = event.which;
+  function expandMarka11y(){
+    $('.js-bookmark-list').on('keydown', '.js-expander', function (event) {
+      console.log('I listen!');
+      var code = event.which;
       
-  //     // 13 = Return, 32 = Space
-  //     if ((code === 13) || (code === 32)) {
-  //       console.log('event.current');
-  //       $(event.currentTarget).next('div').toggleClass('hidden');
-  //     }
-  //   });}
+      // 13 = Return, 32 = Space
+      if ((code === 13) || (code === 32)) {
+        console.log('event.current');
+        $(event.currentTarget).next('div').toggleClass('hidden');
+      }
+    });}
  
 
 
@@ -85,33 +86,35 @@ const markApp = (function () {
     }); 
   }
 
-  // function deleteMarka11y(){
-  //   $('.js-bookmark-list').on('keydown', '.js-deletebutton', function (event) {
-  //     event.preventDefault();
-  //     console.log('I might delete!');
-  //     var code = event.which;
-  //     let id = $(event.currentTarget).closest('li').attr('id');
-  //     console.log(id);
-  //     // 13 = Return, 32 = Space
-  //     if ((code === 13) || (code === 32)) {
-  //       console.log('event.current');
-  //       $(event.currentTarget).next('div').toggleClass('hidden');
-  //     }
-  //   });}
+  function deleteMarka11y(){
+    $('.js-bookmark-list').on('keydown', '.js-deletebutton', function (event) {
+      event.preventDefault();
+      console.log('I might delete!');
+
+      var code = event.which;
+      let id = $(event.currentTarget).closest('li').attr('id');
+      console.log(id);
+      // 13 = Return, 32 = Space
+      if ((code === 13) || (code === 32)) {
+        console.log('event.current');
+        api.deleteBookmark(id, function (response) {
+          store.deleteMark(id);
+          loadPage();
+        
+        });
+      }
+    });}
 
   function deleteBookmark () {
-    $('.js-expanded').on('click', '.js-deletebutton', function (event) {
+    $('.js-bookmark-list').on('click', '.js-deletebutton', function (event) {
       event.preventDefault();
-      console.log('delete button listens');
       let id = $(event.currentTarget).closest('li').attr('id');
       api.deleteBookmark(id, function (response) {
         store.deleteMark(id);
         loadPage();
-      }
-      );
-    }
-   
-    );
+        
+      });
+    });
   }
 
 
