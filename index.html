@@ -7,44 +7,43 @@
   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
   <link rel="stylesheet" href="/styles/main.css">
+  <meta charset="utf-8">
 </head>
 
 <body>
-    <main role ="main">
-
         <header role ="banner">
                 <h1>A Simple Bookmarking App</h1>
         </header>
-
-            <div class="container">
-                    <div class="hidden error">
-                    
-              
-                    </div>
-                    <form class="js-addbookmark-form css-addbookmark">
-                        <div class="col3">
-                                <label for="bookmark-entry">Name</label><br>
-                                <input type="text" name="bookmark-entry" class="js-bookmark-entry" placeholder="Google.com" ><br>      
-                        </div>
-                        <div class="col16">
-                                <label for="markrating">Rating</label><br>
-                                <input type="number" name="markrating" class="js-markrating" placeholder="1 - 5" required>
-                         </div>
-                        <div class="col3">
-                                <label for="url-entry">URL</label><br>
-                                <input type="url" name="url-entry" class="js-url-entry" placeholder="http://www.Google.com" required><br>       
-                        </div>
-                   
-                                <label for="markdescription">Description</label>
-                                <textarea name="markdescription" class="js-mark-description">a really good place to search</textarea>  
+    <main role ="main" class="container">
+        <div class="hidden error"> 
+                        <!-- will populate with error messages from API call             -->
+        </div>
+        <form class="js-addbookmark-form css-addbookmark" role="form">
+            <fieldset>
+                <div class="col3">
+                    <label for="bookmark-entry">Bookmark Name</label><br>
+                    <input id= "bookmark-entry" type="text" name="bookmark-entry" class="js-bookmark-entry" placeholder="Google.com" ><br>      
+                </div>
+                <div class="col16">
+                    <label for="markrating">Bookmark Rating</label><br>
+                    <input id="markrating" type="number" name="markrating" class="js-markrating" placeholder="1 - 5" required>
+                </div>
+                <div class="col3">
+                    <label for="url-entry">Bookmark URL</label><br>
+                    <input id="url-entry" type="url" name="url-entry" class="js-url-entry" placeholder="http://www.Google.com" required><br>       
+                </div>
+                     <label for="markdescription">Bookmark Description</label>
+                    <textarea id="markdescripton" name="markdescription" class="js-mark-description">a really good place to search</textarea>  
+            </fieldset>
+                        
                  
         
        
 
 
                        <div class="center"> <button class="center" type="submit" id="#add">Add item</button></div>
-                    </form>
-                    <form class='filterbox center'>
+        </form>
+        <form role ="search" class='filterbox center'>
                         <p>Filter by minimum rating
                             <select class ='js-selectfilter' name="minimum rating">
                                     <option value="1">1</option>
@@ -56,10 +55,10 @@
                             
                             <button type="submit" id="#minimum">Go!</button></p>
 
-                    </form>
+        </form>
 
-                    <section role ="region">
-                            <ul class="bookmark-list js-bookmark-list">
+        <section role ="region">
+                            <ul class="bookmark-list js-bookmark-list" aria-live="assertive" >
                                <li>
                                    <span class="collapsed"><em>Hard Coded Sample</em> | 5 | FUTUREICON </span>
                                     <div class="hidden">
@@ -69,10 +68,7 @@
 
                                </li>
                             </ul>
-                    </section>
-
-                </div>
-
+        </section>
     </main>
     
     <script src="//code.jquery.com/jquery.min.js"></script>

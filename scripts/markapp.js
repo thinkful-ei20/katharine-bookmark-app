@@ -18,7 +18,7 @@ const markApp = (function () {
   const generateMarkHTML = function (mark) {
 
     return `
-    <li id=${mark.id}><em>${mark.title}</em> | ${mark.rating} | <span class="js-expander expander"><i class="fas fa-chevron-down"></i></span>
+    <li id=${mark.id}><em>${mark.title}</em> | ${mark.rating} | <div tabindex="0" class="js-expander expander"><i class="fas fa-chevron-down" title="expand collapsed description"></i></div>
     <div class="hidden">
     <p> ${mark.desc}
     </p>
