@@ -10,30 +10,50 @@ const markApp = (function () {
     // let marks = store.allMarks;
     let marks = store.allMarks.filter( (marks) => marks.rating >= store.filteredBy);
 
-    let rawHTML = marks.map( (marks) => generateMarkHTML(marks));
+    let rawHTML = generateMarkHTML(marks);
     let htmlToAppend = rawHTML.join('');
     $('.js-bookmark-list').html(htmlToAppend);
  
   };
  
-  const generateMarkHTML = function (mark) {
+  const generateMarkHTML = function (marks) {
+    let HTMLArray = [];
+    let falseMarks = marks.map( function (mark) {
+      if (mark.expanded === false) {
+        HTMLArray.push(
+          `
+          <li class="js-bookmark" id=${mark.id}>
+        
+         <span class="sitename">${mark.title}</span> 
+         <span class="rating">${mark.rating}</span> 
+         <span role="button" tabindex="0" class="js-expander expander">
+           <i class="fas fa-chevron-down fa-2x" title="expand collapsed description"></i>
+         </span>
+         </li>
+          `
+        ) ; }});
+    let trueMarks = marks.map( function (mark) {
+      if (mark.expanded === true) {
+        HTMLArray.push(
+          ` <li class="js-bookmark" id=${mark.id}>
+     
+      <span class="sitename">${mark.title}</span> 
+      <span class="rating">${mark.rating}</span> 
+      <span role="button" tabindex="0" class="js-expander expander">
+        <i class="fas fa-chevron-down fa-2x" title="expand collapsed description"></i>
+      </span>
 
-    return `
-    <li class="js-bookmark" id=${mark.id}>
- 
-        <span class="sitename">${mark.title}</span> 
-        <span class="rating">${mark.rating}</span> 
-        <span role="button" tabindex="0" class="js-expander expander">
-          <i class="fas fa-chevron-down fa-2x" title="expand collapsed description"></i>
-        </span>
-
-    <div class="js-expanded hidden">
-    <p> ${mark.desc}
-    </p>
-    <button><a href="${mark.url}">Visit Site</a></button>
-    <button class="js-deletebutton">Delete</button>
-    </div>
-    </li>`; 
+  <div class="js-expanded">
+  <p> ${mark.desc}
+  </p>
+  <button><a href="${mark.url}">Visit Site</a></button>
+  <button class="js-deletebutton">Delete</button>
+  </div>
+  </li>` 
+        );}});
+        console.log(HTMLArray);
+  return HTMLArray;    
+  
   };
 
   const bindEventListeners = function () {
@@ -57,8 +77,13 @@ const markApp = (function () {
 
   function expandMark(){
     $('.js-bookmark-list').on('click', '.js-expander', function (event) {
-      console.log('expander works!');
-      $(event.currentTarget).next('.js-expanded').toggleClass('hidden');
+      let id = getID(event);
+      let chosenMark = store.allMarks.find((marks) => marks.id === id);
+
+      chosenMark.expanded = !chosenMark.expanded;
+      console.log(chosenMark.expanded);
+      loadPage();
+
     });
   }
 
