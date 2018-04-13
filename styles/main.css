@@ -7,11 +7,12 @@ html {
   min-height: 100%;
 }
 body {
-  font-size: 20px;
-  margin: 0;
-  /* min-height: 100%; */
+  font-family: 'Montserrat', sans-serif;
+  padding: 0;
+  font-size: 18px;
+margin: 0;
   width: 100%;
-
+  min-height: 100%;
 }
 
 
@@ -42,19 +43,6 @@ box-shadow:         2px 4px 8px rgba(50, 50, 50, 0.75);
    float: none;
 
  }
-
- input {
-   margin: 1%;
- }
-
- input:focus { 
-  background-color: yellow;
-}
-
- label {
-   margin: 1%;
- }
-
 }
 
 
@@ -94,20 +82,36 @@ fieldset {
 }
 
 footer  {
-  position: fixed;
-  bottom: 0;
+  margin: 0;
   width: 100%;
+}
+
+footer nav {
+  margin: 0 auto;
+}
+
+
+footer nav ul {
+  padding: 0;
+  margin: 0;
+}
+
+footer li {
+  display: inline;
+   list-style-type: none;
+   margin: 5%;
 }
 
 form {
   padding: 1%;
-  width: 100%%;
+  width: 100%;
   margin: 0 auto 3% auto;
 }
 
 
 header {
   padding: 3%;
+  font-family: 'Fira Sans', sans-serif;
   text-align: center;
   margin-bottom: 5%;
 }
@@ -117,16 +121,31 @@ header {
 }
 
 input {
-  width: 90%;
   border: 1px dotted #999;
   border-radius: 0;
   box-sizing: border-box;
   -webkit-appearance: none;
 }
 
+input#markrating {
+  width: 50%;
+}
+
+input {
+  padding: 3%;
+}
+
+input:focus { 
+ background-color: yellow;
+}
+
+label {
+  margin: 1%;
+}
+
 li {
   padding: 3%;
-  border: 5px solid olive;
+
 }
 
 .right {
@@ -142,11 +161,18 @@ ul {
   list-style-type: none;
 }
 
+.sitename {
+  font-family: 'Fira Sans', sans-serif;f;
+  font-weight: bold;
+  font-size: 2em;
+}
+
 textarea {
   width: 100%;
   border: 1px dotted #999;
   border-radius: 0;
    resize: none;
+   padding: 3%;
 }
 
 /*COLORS*/
@@ -179,7 +205,7 @@ header {
 }
 
 li {
-  border: 5px solid #838383;
+  /* border: 5px solid #838383; */
 }
 
 

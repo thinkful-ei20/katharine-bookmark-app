@@ -6,6 +6,7 @@ console.log('markapp is connected');
 const markApp = (function () {
 
   const loadPage = function () {
+
     // let marks = store.allMarks;
     let marks = store.allMarks.filter( (marks) => marks.rating >= store.filteredBy);
 
@@ -18,7 +19,7 @@ const markApp = (function () {
   const generateMarkHTML = function (mark) {
 
     return `
-    <li class="js-bookmark" id=${mark.id}><em>${mark.title}</em> | ${mark.rating} | <span role="button" tabindex="0" class="js-expander expander"><i class="fas fa-chevron-down" title="expand collapsed description"></i></span>
+    <li class="js-bookmark" id=${mark.id}><span class="sitename">${mark.title}</span> | ${mark.rating} | <span role="button" tabindex="0" class="js-expander expander"><i class="fas fa-chevron-down fa-2x" title="expand collapsed description"></i></span>
     <div class="js-expanded hidden">
     <p> ${mark.desc}
     </p>
@@ -48,7 +49,7 @@ const markApp = (function () {
   };
 
   function expandMark(){
-    $('.js-bookmark-list').on('click', 'span', function (event) {
+    $('.js-bookmark-list').on('click', '.js-expander', function (event) {
       console.log('expander works!');
       $(event.currentTarget).next('div').toggleClass('hidden');
     });
@@ -78,11 +79,14 @@ const markApp = (function () {
       let addedDesc = $('.js-mark-description').val();
 
       api.createBookmark(addedTitle, addedURL, addedRating, addedDesc, function (response)
-      
       {
         store.addMark(response);
         loadPage();
       }); 
+      $('.js-bookmark-entry').val('');
+      $('.js-url-entry').val('');
+      $('.js-markrating').val('');
+       $('.js-mark-description').val('');
     }); 
   }
 
