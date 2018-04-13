@@ -19,7 +19,7 @@ const markApp = (function () {
 
     return `
     <li class="js-bookmark" id=${mark.id}><em>${mark.title}</em> | ${mark.rating} | <span role="button" tabindex="0" class="js-expander expander"><i class="fas fa-chevron-down" title="expand collapsed description"></i></span>
-    <div class="hidden">
+    <div class="js-expanded hidden">
     <p> ${mark.desc}
     </p>
     <button><a href="${mark.url}">Visit Site</a></button>
@@ -33,7 +33,7 @@ const markApp = (function () {
     deleteBookmark();
     expandMark();
     filterByMin();
-    expandMarka11y();
+    // expandMarka11y();
   };
 
 
@@ -53,17 +53,17 @@ const markApp = (function () {
     });
   }
 
-  function expandMarka11y(){
-    $('.js-bookmark-list').on('keydown', '.js-expander', function (event) {
-      console.log('I listen!');
-      var code = event.which;
+  // function expandMarka11y(){
+  //   $('.js-bookmark-list').on('keydown', '.js-expander', function (event) {
+  //     console.log('I listen!');
+  //     var code = event.which;
       
-      // 13 = Return, 32 = Space
-      if ((code === 13) || (code === 32)) {
-        console.log('event.current');
-        $(event.currentTarget).next('div').toggleClass('hidden');
-      }
-    });}
+  //     // 13 = Return, 32 = Space
+  //     if ((code === 13) || (code === 32)) {
+  //       console.log('event.current');
+  //       $(event.currentTarget).next('div').toggleClass('hidden');
+  //     }
+  //   });}
  
 
 
@@ -85,8 +85,22 @@ const markApp = (function () {
     }); 
   }
 
+  // function deleteMarka11y(){
+  //   $('.js-bookmark-list').on('keydown', '.js-deletebutton', function (event) {
+  //     event.preventDefault();
+  //     console.log('I might delete!');
+  //     var code = event.which;
+  //     let id = $(event.currentTarget).closest('li').attr('id');
+  //     console.log(id);
+  //     // 13 = Return, 32 = Space
+  //     if ((code === 13) || (code === 32)) {
+  //       console.log('event.current');
+  //       $(event.currentTarget).next('div').toggleClass('hidden');
+  //     }
+  //   });}
+
   function deleteBookmark () {
-    $('div').on('click', '.js-deletebutton', function (event) {
+    $('.js-expanded').on('click', '.js-deletebutton', function (event) {
       event.preventDefault();
       console.log('delete button listens');
       let id = $(event.currentTarget).closest('li').attr('id');
