@@ -76,7 +76,9 @@ const markApp = (function () {
       }
     });}
  
-
+  function getID(event) {
+    return $(event.currentTarget).closest('li').attr('id');
+  }
 
   function addBookmark () {
     $('.js-addbookmark-form').submit(function (event) {
@@ -102,10 +104,8 @@ const markApp = (function () {
   function deleteMarka11y(){
     $('.js-bookmark-list').on('keydown', '.js-deletebutton', function (event) {
       event.preventDefault();
-      console.log('I might delete!');
-
       var code = event.which;
-      let id = $(event.currentTarget).closest('li').attr('id');
+      let id = getID(event);
       console.log(id);
       // 13 = Return, 32 = Space
       if ((code === 13) || (code === 32)) {
@@ -121,11 +121,10 @@ const markApp = (function () {
   function deleteBookmark () {
     $('.js-bookmark-list').on('click', '.js-deletebutton', function (event) {
       event.preventDefault();
-      let id = $(event.currentTarget).closest('li').attr('id');
+      let id = getID(event);
       api.deleteBookmark(id, function (response) {
         store.deleteMark(id);
         loadPage();
-        
       });
     });
   }
