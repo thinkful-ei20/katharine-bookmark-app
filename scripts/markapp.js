@@ -6,8 +6,10 @@ console.log('markapp is connected');
 const markApp = (function () {
 
   const loadPage = function () {
-    let marks = store.allMarks;
-    let rawHTML = store.allMarks.map( (marks) => generateMarkHTML(marks));
+    // let marks = store.allMarks;
+    let marks = store.allMarks.filter( (marks) => marks.rating >= store.filteredBy);
+
+    let rawHTML = marks.map( (marks) => generateMarkHTML(marks));
     let htmlToAppend = rawHTML.join();
     $('.js-bookmark-list').html(htmlToAppend);
  
@@ -31,14 +33,18 @@ const markApp = (function () {
     addBookmark();
     deleteBookmark();
     expandMark();
-    // revealError();
+    filterByMin();
   };
 
 
-  // function revealError() {
-  //   $('.error').toggleClass('hidden').append('heres an error!');
+  const filterByMin = function () {
+    $('.filterbox').submit(function (event) {
+      event.preventDefault();
+      store.filteredBy = $( 'select option:selected' ).val();
+      loadPage();
+    });
 
-  // }
+  };
 
   function expandMark(){
     $('.js-bookmark-list').on('click', 'span', function (event) {
@@ -53,7 +59,7 @@ const markApp = (function () {
       console.log('add button listens');
       let addedTitle = $('.js-bookmark-entry').val();
       let addedURL = $('.js-url-entry').val();
-      let addedRating = null;
+      let addedRating =  $('.js-markrating').val();
       let addedDesc = $('.js-mark-description').val();
 
       api.createBookmark(addedTitle, addedURL, addedRating, addedDesc, function (response)

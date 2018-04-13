@@ -9,22 +9,23 @@ html {
 body {
   font-size: 20px;
   margin: 0;
-  min-height: 100%;
+  /* min-height: 100%; */
   width: 100%;
 
 }
 
 
-.button {
 
-  border-radius: 13px;.
+
+button {
+  border-radius: 13px;
   border: 1px solid black;
   padding: 3%;
   font-size: inherit;
 
--webkit-box-shadow: 2px 4px 8px rgba(50, 50, 50, 0.75);
+/* -webkit-box-shadow: 2px 4px 8px rgba(50, 50, 50, 0.75);
 -moz-box-shadow:    2px 4px 8px rgba(50, 50, 50, 0.75);
-box-shadow:         2px 4px 8px rgba(50, 50, 50, 0.75);
+box-shadow:         2px 4px 8px rgba(50, 50, 50, 0.75); */
 
 }
 
@@ -43,15 +44,17 @@ footer  {
 }
 
 form {
-  padding: 5%;
+  padding: 3%;
   border: 5px solid orange;
   width: 66%;
-  margin: auto auto;
+  margin: 0 auto 3% auto;
 }
 
 
-h1 {
-  text-align: right;
+header {
+  padding: 3%;
+  text-align: center;
+  margin-bottom: 5%;
 }
 
 .hidden {
@@ -85,7 +88,43 @@ ul {
 
 
 
+/*COLORS*/
 
+
+
+.submit {
+  background-color: #428bca;
+  color: white;
+}
+
+input[type=text] {
+  background-color: #EDEDED;
+}
+
+footer {
+  background-color: #838383;
+}
+
+footer a {
+  color: black;
+}
+
+header {
+  background-color: #b4b4b4;
+  border: #838383;
+}
+
+#word {
+  border-color: #5cb85c;
+}
+
+form {
+  border: 5px solid #838383;
+}
+
+li {
+  border: 5px solid #838383;
+}
 
 
 
