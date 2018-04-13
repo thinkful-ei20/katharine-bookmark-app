@@ -18,7 +18,7 @@ const markApp = (function () {
   const generateMarkHTML = function (mark) {
 
     return `
-    <li id=${mark.id}><em>${mark.title}</em> | ${mark.rating} | <div tabindex="0" class="js-expander expander"><i class="fas fa-chevron-down" title="expand collapsed description"></i></div>
+    <li class="js-bookmark" id=${mark.id}><em>${mark.title}</em> | ${mark.rating} | <span role="button" tabindex="0" class="js-expander expander"><i class="fas fa-chevron-down" title="expand collapsed description"></i></span>
     <div class="hidden">
     <p> ${mark.desc}
     </p>
@@ -33,6 +33,7 @@ const markApp = (function () {
     deleteBookmark();
     expandMark();
     filterByMin();
+    expandMarka11y();
   };
 
 
@@ -51,6 +52,20 @@ const markApp = (function () {
       $(event.currentTarget).next('div').toggleClass('hidden');
     });
   }
+
+  function expandMarka11y(){
+    $('.js-bookmark-list').on('keydown', '.js-expander', function (event) {
+      console.log('I listen!');
+      var code = event.which;
+      
+      // 13 = Return, 32 = Space
+      if ((code === 13) || (code === 32)) {
+        console.log('event.current');
+        $(event.currentTarget).next('div').toggleClass('hidden');
+      }
+    });}
+ 
+
 
   function addBookmark () {
     $('.js-addbookmark-form').submit(function (event) {
