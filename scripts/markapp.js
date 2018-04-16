@@ -6,10 +6,10 @@ console.log('markapp is connected');
 const markApp = (function () {
 
   const loadPage = function () {
-
+    console.log('loading runs');
     // let marks = store.allMarks;
     let marks = store.allMarks.filter( (marks) => marks.rating >= store.filteredBy);
-
+    
     let rawHTML = generateMarkHTML(marks);
     let htmlToAppend = rawHTML.join('');
     $('.js-bookmark-list').html(htmlToAppend);
@@ -23,7 +23,6 @@ const markApp = (function () {
         HTMLArray.push(
           `
           <li class="js-bookmark" id=${mark.id}>
-        
          <span class="sitename">${mark.title}</span> 
          <span class="rating">${mark.rating}</span> 
          <span role="button" tabindex="0" class="js-expander expander">
@@ -36,13 +35,11 @@ const markApp = (function () {
       if (mark.expanded === true) {
         HTMLArray.push(
           ` <li class="js-bookmark" id=${mark.id}>
-     
       <span class="sitename">${mark.title}</span> 
       <span class="rating">${mark.rating}</span> 
       <span role="button" tabindex="0" class="js-expander expander">
         <i class="fas fa-chevron-down fa-2x" title="expand collapsed description"></i>
       </span>
-
   <div class="js-expanded">
   <p> ${mark.desc}
   </p>
@@ -51,8 +48,8 @@ const markApp = (function () {
   </div>
   </li>` 
         );}});
-        console.log(HTMLArray);
-  return HTMLArray;    
+    console.log(HTMLArray);
+    return HTMLArray;    
   
   };
 
@@ -63,6 +60,7 @@ const markApp = (function () {
     filterByMin();
     expandMarka11y();
     deleteMarka11y();
+    openAddBookmark();
   };
 
 
@@ -74,7 +72,6 @@ const markApp = (function () {
     });
 
   };
-
   function expandMark(){
     $('.js-bookmark-list').on('click', '.js-expander', function (event) {
       let id = getID(event);
@@ -86,18 +83,16 @@ const markApp = (function () {
 
     });
   }
-
-
-  
-
   function expandMarka11y(){
     $('.js-bookmark-list').on('keydown', '.js-expander', function (event) {
       console.log('I listen!');
       var code = event.which;
       // 13 = Return, 32 = Space
       if ((code === 13) || (code === 32)) {
-        console.log('event.current');
-        $(event.currentTarget).next('div').toggleClass('hidden');
+        let id = getID(event);
+        let chosenMark = store.allMarks.find((marks) => marks.id === id);
+        chosenMark.expanded = !chosenMark.expanded;
+        loadPage();
       }
     });}
  
@@ -105,8 +100,46 @@ const markApp = (function () {
     return $(event.currentTarget).closest('li').attr('id');
   }
 
+  function openAddBookmark () {
+    $('.js-formholder').on('click', '.js-addbutton', function (event) {
+      event.preventDefault();
+      console.log('pandorica opens');
+      $('.js-formholder').html(bookmarkForm);
+    });
+  }
+
+  const bookmarkForm = `
+<form class="js-addbookmark-form css-addbookmark" role="form">
+<fieldset>
+    <div class="col3">
+        <label for="bookmark-entry">Bookmark Name</label><br>
+        <input id= "bookmark-entry" type="text" name="bookmark-entry" class="js-bookmark-entry" placeholder="Google.com" ><br>      
+    </div>
+    <div class="col16">
+        <label for="markrating">Bookmark Rating</label><br>
+        <input id="markrating" type="number" name="markrating" class="js-markrating" placeholder="1 - 5" required>
+    </div>
+    <div class="col3">
+        <label for="url-entry">Bookmark URL</label><br>
+        <input id="url-entry" type="url" name="url-entry" class="js-url-entry" placeholder="http://www.Google.com" required><br>       
+    </div>
+   
+         <label for="markdescription">Bookmark Description</label>
+        <textarea id="markdescripton" name="markdescription" class="js-mark-description">a really good place to search</textarea>  
+</fieldset>
+<div class="center"> <button class="center" type="submit" id="#add">Add item</button><button class='js-cancel'>Cancel</button></div>
+</form>
+`;
+
+  // function closeAddBookmark () {
+  //   $('.js-cancel').on('click', function (event) {
+  //     event.preventDefault();
+  //     console.log('pandorica closes?');
+  //   });
+  // }
+
   function addBookmark () {
-    $('.js-addbookmark-form').submit(function (event) {
+    $('.js-formholder').on('submit', '.js-addbookmark-form', function (event) {
       event.preventDefault();
       console.log('add button listens');
       let addedTitle = $('.js-bookmark-entry').val();

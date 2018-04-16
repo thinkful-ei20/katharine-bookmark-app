@@ -31,7 +31,7 @@ box-shadow:         2px 4px 8px rgba(50, 50, 50, 0.75);
 }
 
 .center {
-  margin: auto;
+  margin: auto auto;
   text-align: center;
 }
 
@@ -61,7 +61,6 @@ box-shadow:         2px 4px 8px rgba(50, 50, 50, 0.75);
   }
   
 }
-
 
 
 
